@@ -20,7 +20,12 @@ public class LockedMe
 		try 
 		{
 			mainScreen();
-		} 
+		}
+		catch (IOException e) 
+		{
+			System.out.println("Something went wrong on the file directory.");
+			System.out.println(e.getCause());
+		}
 		catch (Exception e) 
 		{
 			System.out.println("Something went wrong.");
@@ -71,7 +76,8 @@ public class LockedMe
 		
 		System.out.println("Please select among the following options by typing the corresponding number:");
 		System.out.println("1. Add a file to existing directory.");
-		System.out.println("2. Delete a file from existing directory.\n");
+		System.out.println("2. Delete a file from existing directory.");
+		System.out.println("3. Search for a file from existing directory.\n");
 		sel = input.nextLine();
 		
 		switch(sel.charAt(0))
@@ -83,11 +89,11 @@ public class LockedMe
 				File upload = new File(storage.getAbsoluteFile()+"\\"+sel.toLowerCase());
 				if(upload.createNewFile())
 				{
-					System.out.println("File created successfully.");
+					System.out.println("File created successfully.\n");
 				}
 				else
 				{
-					System.out.println("File already exists.");
+					System.out.println("File already exists.\n");
 				}
 				Arrays.parallelSort(dir); 
 				secondOption();
@@ -104,16 +110,38 @@ public class LockedMe
 					{
 						f.delete();
 						deleted = true;
-						System.out.println("File deleted successfully.");
+						System.out.println("File deleted successfully.\n");
 					}
 					else if(i == dir.length-1 && deleted == false)
 					{
-						System.out.println("File not found.");
+						System.out.println("File not found.\n");
 					}
 					i++;
 				}
 				//No need to sort after elimination since the rest of the files will be sorted already
 				secondOption();
+			}
+			case('3'):
+			{
+				System.out.println("Please type the name of the file you want to delete:\n");
+				sel = input.nextLine();
+				boolean found = false;
+				int i=0;
+				
+				for(File f: dir)
+				{
+					if(f.getName().equals(sel))
+					{
+						found = true;
+						System.out.println(dir[i].getName()+" has been found in position "+i+" of the directory.\n");
+					}
+					else if(i == dir.length-1 && found == false)
+					{
+						System.out.println("File not found.\n");
+					}
+					i++;
+				}
+				secondOption();			
 			}
 		}	
 	}
