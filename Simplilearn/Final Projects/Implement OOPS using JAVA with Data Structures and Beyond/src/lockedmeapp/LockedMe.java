@@ -34,12 +34,12 @@ public class LockedMe
 	private static void mainScreen() throws Exception
 	{
 		System.out.print("Welcome to the LockedMe app\n designed by Hector Alarcon");
-		System.out.println("After the following options, you may input the number corresponding of the option:");
-		System.out.println("1. Option");
-		System.out.println("2. Option");
+		System.out.println("Please select among the following options by typing the corresponding number:");
+		System.out.println("1. Inspect Current Directory");
+		System.out.println("2. File handeling");
 		System.out.println("Please type your input of choice: \n");
 		sel = input.nextLine();
-		Arrays.parallelSort(dir);
+		Arrays.parallelSort(dir); //Updating the stored files if any had been modified.
 		if(sel.startsWith("1") || sel.equalsIgnoreCase("o"))
 		{
 			firstOption();
@@ -68,6 +68,27 @@ public class LockedMe
 	
 	private static void secondOption() throws Exception
 	{
-		System.out.println("SecondOptionSelected");
+		System.out.println("Please select among the following options by typing the corresponding number:");
+		System.out.println("1. Add a file to existing directory.");
+		sel = input.nextLine();
+		
+		switch(sel.charAt(0))
+		{
+			case('1'):
+			{	
+				System.out.println("Please type the name of the new file:");
+				sel = input.nextLine();
+				File upload = new File(storage.getAbsoluteFile()+"\\"+sel.toLowerCase());
+				if(upload.createNewFile())
+				{
+					System.out.println("File created successfully.");
+				}
+				else
+				{
+					System.out.println("File already exists.");
+				}
+				secondOption();
+			}
+		}	
 	}
 }
