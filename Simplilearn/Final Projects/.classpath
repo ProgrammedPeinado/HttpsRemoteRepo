@@ -6,6 +6,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="Implement OOPS using JAVA with Data Structures and Beyond/validatingemailHectorAlarcon.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
