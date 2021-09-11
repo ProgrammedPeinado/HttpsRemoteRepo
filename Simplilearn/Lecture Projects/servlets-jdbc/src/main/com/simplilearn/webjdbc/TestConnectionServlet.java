@@ -45,8 +45,7 @@ public class TestConnectionServlet extends HttpServlet
 			InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resource_mysql.properties");
 			Properties props = new Properties();
 			props.load(in);
-			
-			con = DriverManager.getConnection(props.getProperty("url"), props.getProperty("user"), props.getProperty("pass"));
+			con = DriverManager.getConnection(props.getProperty("url"), props.getProperty("userid"), props.getProperty("password"));
 			out.println("Connected to the database....");
 			
 			
