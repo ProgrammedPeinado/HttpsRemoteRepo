@@ -42,16 +42,9 @@ public class TestConnectionServlet extends HttpServlet
 		{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			//"D:\\Authentication\\resource_mysql.txt"
 			InputStream in = getServletContext().getResourceAsStream("/WEB-INF/resource_mysql.properties");
 			Properties props = new Properties();
 			props.load(in);
-			
-			//String url = "jdbc:mysql://localhost:3306/classicmodels";
-			//String user = "root";
-			//String pass = "Hap17@pei12!";
-				
-			//con = DriverManager.getConnection(url, user, pass);
 			
 			con = DriverManager.getConnection(props.getProperty("url"), props.getProperty("user"), props.getProperty("pass"));
 			out.println("Connected to the database....");
