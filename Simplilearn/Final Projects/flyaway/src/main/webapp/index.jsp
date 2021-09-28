@@ -19,7 +19,7 @@
     </div>
     <p>Fill out the following form to find a flights that matches your schedule</p>
     <div>
-        <form action="/list" method="post">
+        <form action="flightlist" method="POST">
             <p>Please select the date you would like to book for : <input id="date" autofocus="autofocus" type="date" name="book_date" id="book_date"  min="2021-09-01" max="2021-10-31" />
             </p>
             <p>Source:
