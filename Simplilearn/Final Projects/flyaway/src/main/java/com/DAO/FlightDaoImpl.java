@@ -1,6 +1,8 @@
 package com.DAO;
 
+import java.io.PrintWriter;
 import java.util.List;
+
 
 import javax.persistence.TypedQuery;
 
@@ -11,6 +13,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 import com.dto.Flight;
 
@@ -73,13 +76,38 @@ public class FlightDaoImpl implements FlightDAO{
 		Session session  = factory.openSession();
 		Transaction txn = session.beginTransaction();
 		
-		String hql = "FROM Flight f where (f.source = "+src+
-						") AND (f.destination = "+dest+
-						") AND (f.seats >= "+seats+
-						") AND (f.date >= "+date+")";
+		System.out.println("Source: "+src+
+							"\nDestination: "+dest+
+							"\nDate: "+date+
+							"\nSeats: "+seats);
 		
+		/**
+		String sql = "SELECT f.src_point, f.dest_point, f.travel_date, f.seat_vacancy "+
+				"FROM avail_flights f "+
+				"WHERE ((f.src_point = \""+src+
+				"\") AND (f.dest_point = \""+dest+
+				"\") AND (f.seat_vacancy >= \""+Integer.toString(seats)+
+				"\") AND (f.travel_date >= \""+date +"\" ));"; //Works
+		**/
+
+		String hql = "SELECT fli.source, fli.destination, fli.date, fli.seats FROM Flight AS fli WHERE ((fli.source =:source"+
+						") AND (fli.destination =:destination"+
+						") AND (fli.seats >=:seats"+
+						") AND (fli.date >=:date))";
+
+		
+		//System.out.println(sql);
+		//Query query = session.createQuery(hql);
 		TypedQuery<Flight> query = session.createQuery(hql);
+		query.setParameter("source", src);
+		query.setParameter("destination", dest);
+		query.setParameter("seats", seats);
+		query.setParameter("date", date);
+		
+		//TypedQuery<Flight> query = session.createSQLQuery(sql);
+		System.out.println("Query created");
 		flights = query.getResultList();
+		System.out.println("Query completed, leaving the method.");
 		session.close();
 		return flights;
 	}	
@@ -88,7 +116,7 @@ public class FlightDaoImpl implements FlightDAO{
 	public Flight searchFlightById(Integer flightID) {
 		Session session  = factory.openSession();
 		Transaction txn = session.beginTransaction();
-		String hql = "FROM Flight f where f.id = "+ flightID;
+		String hql = "FROM Flight = "+ flightID;
 		TypedQuery<Flight> query = session.createQuery(hql);
 		Flight flight = query.getSingleResult();
 		return flight;

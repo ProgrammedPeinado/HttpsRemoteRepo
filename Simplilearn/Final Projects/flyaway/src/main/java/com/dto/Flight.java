@@ -32,6 +32,27 @@ public class Flight
 	{
 	}
 	
+	public Flight(String id, String source, String destination, String date, String time, String price, String seats)
+	{
+		super();
+		this.id = id;
+		this.source = source;
+		this.destination = destination;
+		this.date = date;
+		this.time = time;
+		this.price = Double.parseDouble(price);
+		this.seats = Integer.parseInt(seats);
+	}
+	
+	public Flight(String source, String destination, String seats, String date)
+	{
+		super();
+		this.source = source;
+		this.destination = destination;
+		this.seats = Integer.parseInt(seats);
+		this.date = date;
+	}
+	
 	public String getId() {
 		return id;
 	}

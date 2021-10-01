@@ -24,6 +24,8 @@ import com.DAO.FlightDAO;
 import com.DAO.FlightDaoImpl;
 import com.dto.Flight;
 
+import net.bytebuddy.description.type.TypeList.Generic;
+
 /**
  * Servlet implementation class FlightList
  */
@@ -38,14 +40,12 @@ public class FlightList extends HttpServlet
      */
     public FlightList() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -56,24 +56,31 @@ public class FlightList extends HttpServlet
 	{
 		String src = request.getParameter("source_country");
 		String dest = request.getParameter("destination_country");
-		String date = request.getParameter("date");
+		String date = request.getParameter("book_date");
 		int pass = Integer.parseInt(request.getParameter("n_pass"));
 		
 		PrintWriter out = response.getWriter();
 		FlightDAO flightDAO = new FlightDaoImpl();
 		
 		try
-		{			 
-	        out.println(flightDAO.listFlights(src, dest, date,pass));
-			
+		{	
+			List<Flight> res = flightDAO.listFlights(src, dest, date, pass);
+			System.out.println("Starting to loop");
+			request.setAttribute("flightList", res);
+	        System.out.println("Finished looping");
 		}
 		catch(Exception e)
 		{
-			out.println("There are no flights matching your search criterion.");
+			System.out.println("\n\nStack Trace:");
+			e.printStackTrace();
+			System.out.println("\n\nMessage:"+e.getMessage());
+			System.out.println("\n\nThere are no flights matching your search criterion.");
 		}
 		finally
 		{
-			response.sendRedirect(request.getContextPath() + "/flightbook.jsp");
+			
+			request.getRequestDispatcher("flightbook.jsp").forward(request,response);
+			//response.sendRedirect("flightbook.jsp");
 			out.close();
 		}
 		

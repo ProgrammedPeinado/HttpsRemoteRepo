@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+table tr td th {
+	color: black;
+	display: inline;
+	text-align: center;
+}
 
 h1 {
     color: black;

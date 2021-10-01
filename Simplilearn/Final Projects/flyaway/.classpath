@@ -16,6 +16,7 @@
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.5">
@@ -28,38 +29,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/antlr-2.7.7.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/byte-buddy-1.8.12.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/c3p0-0.9.5.2.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/classmate-1.3.4.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/ehcache-core-2.4.3.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/ehcache-core-2.6.9.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/geolatte-geom-1.3.0.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hazelcast-hibernate53-1.3.0.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-c3p0-5.3.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-commons-annotations-5.0.3.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-core-5.3.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-ehcache-5.4.16.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-envers-5.3.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-jpamodelgen-5.3.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-osgi-5.3.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-proxool-5.3.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/hibernate-spatial-5.3.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/jandex-2.0.3.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/javassist-3.22.0-GA.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/javax.interceptor-api-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/javax.persistence-api-2.2.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/jboss-logging-3.3.2.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/jts-core-1.14.0.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/logback-core-1.2.3.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/mchange-commons-java-0.2.11.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/mysql-connector-java-8.0.11.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/org.osgi.compendium-4.3.1.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/org.osgi.core-4.3.1.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/postgresql-42.2.2.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/proxool-0.8.3.jar"/>
-	<classpathentry kind="lib" path="D:/peina/Downloads/Hibernate5-20210925T200208Z-001/Hibernate5/slf4j-api-1.7.30.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
