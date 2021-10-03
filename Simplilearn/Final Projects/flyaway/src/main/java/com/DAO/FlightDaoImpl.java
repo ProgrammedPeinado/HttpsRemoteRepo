@@ -32,14 +32,14 @@ public class FlightDaoImpl implements FlightDAO{
 		
 	@Override
 	public Integer addFlight(Flight flight) {
-		Integer empId = null;
+		Integer flight_id = null;
 		Session session = factory.openSession();
 		Transaction txn = session.beginTransaction();
 		// save methods adds new row into database table
-		empId = (Integer) session.save(flight);
+		flight_id = (Integer) session.save(flight);
 		txn.commit();
 		session.close();
-		return empId;
+		return flight_id;
 	}	
 	
 	
@@ -90,7 +90,7 @@ public class FlightDaoImpl implements FlightDAO{
 				"\") AND (f.travel_date >= \""+date +"\" ));"; //Works
 		**/
 
-		String hql = "SELECT fli.source, fli.destination, fli.date, fli.seats FROM Flight AS fli WHERE ((fli.source =:source"+
+		String hql = "SELECT fli.id, fli.source, fli.destination, fli.date, fli.seats FROM Flight AS fli WHERE ((fli.source =:source"+
 						") AND (fli.destination =:destination"+
 						") AND (fli.seats >=:seats"+
 						") AND (fli.date >=:date))";

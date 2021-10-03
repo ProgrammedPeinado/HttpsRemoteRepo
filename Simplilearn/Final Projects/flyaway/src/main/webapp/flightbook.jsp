@@ -20,11 +20,16 @@
 	</div>
 	<div>
 	<table>
-		<c:forEach var="flight" items="${flightList}">
-		    <tr><c:forEach var="details" items="${flight}" >
-		        <th><c:out value="${details}"/></th>		                             
-		        </c:forEach>
-		        <th><input href="checkout" type="submit" value="Book it!"/><br></th>
+		<tr><th>Flight #</th><th>Source</th><th>Destination</th><th>Flight date</th><th>Available seats</th><th>Select</th>
+		<c:forEach var="flight" items="${flightList}" varStatus="loop">
+		    <tr>
+		    	<td>${loop.index}</td>
+		    	<th>${flight.id} </th>
+		    	<th>${flight.source} </th>
+		    	<th>${flight.destination} </th>
+		    	<th>${flight.date} </th>
+		    	<th>${flight.seats}</th>
+		    	<th><a href="validateflight?id=<c:out value='${flight.id}' />">Book</a><br></th>
 		    </tr>
 		</c:forEach>
 	</table>

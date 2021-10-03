@@ -14,7 +14,7 @@ public class Flight
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name="flight_id")
-	private String id;
+	private int id;
 	@Column(name="src_point")
 	private String source;
 	@Column(name="dest_point")
@@ -32,7 +32,7 @@ public class Flight
 	{
 	}
 	
-	public Flight(String id, String source, String destination, String date, String time, String price, String seats)
+	public Flight(int id, String source, String destination, String date, String time, String price, String seats)
 	{
 		super();
 		this.id = id;
@@ -44,6 +44,15 @@ public class Flight
 		this.seats = Integer.parseInt(seats);
 	}
 	
+	public Flight(int id, String source, String destination, String seats, String date)
+	{
+		super();
+		this.source = source;
+		this.destination = destination;
+		this.seats = Integer.parseInt(seats);
+		this.date = date;
+	}
+	
 	public Flight(String source, String destination, String seats, String date)
 	{
 		super();
@@ -53,10 +62,10 @@ public class Flight
 		this.date = date;
 	}
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getSource() {
