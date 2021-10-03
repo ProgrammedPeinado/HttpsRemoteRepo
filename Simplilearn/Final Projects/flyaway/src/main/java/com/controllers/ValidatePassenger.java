@@ -54,7 +54,6 @@ public class ValidatePassenger extends HttpServlet {
 		{
 			Passenger passenger = passDao.searchPassengerById(Integer.parseInt(request.getParameter("id")));
 			Flight flight = flightDao.searchFlightById(passenger.getFlight_id());
-			response.getWriter().append(request.getParameter("id"));
 			request.setAttribute("passenger", passenger);
 			request.setAttribute("flight", flight);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("summary.jsp");

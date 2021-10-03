@@ -35,7 +35,6 @@ public class FlightDaoImpl implements FlightDAO{
 		Integer flight_id = null;
 		Session session = factory.openSession();
 		Transaction txn = session.beginTransaction();
-		// save methods adds new row into database table
 		flight_id = (Integer) session.save(flight);
 		txn.commit();
 		session.close();
@@ -68,6 +67,23 @@ public class FlightDaoImpl implements FlightDAO{
 		session.close();
 	}	
 	
+	@Override
+	public List<Flight> listFlights(String src, String dest) 
+	{
+		List<Flight> flights = null;
+		Session session  = factory.openSession();
+		Transaction txn = session.beginTransaction();
+
+		String hql = "SELECT fli.source, fli.destination, FROM Flight AS fli";
+
+		TypedQuery<Flight> query = session.createQuery(hql);
+		query.setParameter("source", src);
+		query.setParameter("destination", dest);
+
+		flights = query.getResultList();
+		session.close();
+		return flights;
+	}	
 	
 	@Override
 	public List<Flight> listFlights(String src, String dest, String date, int seats) 
@@ -75,42 +91,38 @@ public class FlightDaoImpl implements FlightDAO{
 		List<Flight> flights = null;
 		Session session  = factory.openSession();
 		Transaction txn = session.beginTransaction();
-		
-		System.out.println("Source: "+src+
-							"\nDestination: "+dest+
-							"\nDate: "+date+
-							"\nSeats: "+seats);
-		
-		/**
-		String sql = "SELECT f.src_point, f.dest_point, f.travel_date, f.seat_vacancy "+
-				"FROM avail_flights f "+
-				"WHERE ((f.src_point = \""+src+
-				"\") AND (f.dest_point = \""+dest+
-				"\") AND (f.seat_vacancy >= \""+Integer.toString(seats)+
-				"\") AND (f.travel_date >= \""+date +"\" ));"; //Works
-		**/
 
 		String hql = "SELECT fli.id, fli.source, fli.destination, fli.date, fli.seats FROM Flight AS fli WHERE ((fli.source =:source"+
 						") AND (fli.destination =:destination"+
 						") AND (fli.seats >=:seats"+
 						") AND (fli.date >=:date))";
 
-		
-		//System.out.println(sql);
-		//Query query = session.createQuery(hql);
 		TypedQuery<Flight> query = session.createQuery(hql);
 		query.setParameter("source", src);
 		query.setParameter("destination", dest);
 		query.setParameter("seats", seats);
 		query.setParameter("date", date);
 		
-		//TypedQuery<Flight> query = session.createSQLQuery(sql);
-		System.out.println("Query created");
 		flights = query.getResultList();
-		System.out.println("Query completed, leaving the method.");
 		session.close();
 		return flights;
 	}	
+	
+	@Override
+	public List<Flight> listFlights() 
+	{
+		List<Flight> flights = null;
+		Session session  = factory.openSession();
+		Transaction txn = session.beginTransaction();
+
+		String hql = "From Flight";
+
+		TypedQuery<Flight> query = session.createQuery(hql);
+		
+		flights = query.getResultList();
+		session.close();
+		return flights;
+	}
 	
 	@Override
 	public Flight searchFlightById(Integer flightID) {

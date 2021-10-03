@@ -1,6 +1,8 @@
-<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.dto.Flight" %>
+<%@ page import="com.DAO.FlightDaoImpl" %>
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -20,14 +22,9 @@
 		</table>
 	</div>
 	<div>
-	<h2>Passenger information</h2>
-	<form action="validatepassenger" method="POST">
-	<p>Firstname: <input type="text" name="firstname"value="Firstname"></p>
-	<p>Lastname: <input type="text" name="lastname" value="Lastname"></p>
-	<p>Purchased seats: <input type="text" name="seats" value="Number of seats purchased"></p>
-	<p><input type="hidden" name="flight_id" value=<o:out value="${flightID}"/>></p>
-	<p><input type="submit" value="Submit form" /></p>
-	</form>
+	<a href="FlightServlet">List all flights</a>
+	<a href="FlightServlet?ListSource">List of sources and destinations</a>
+	<a href="FlightServlet?ListAirlines">List of airlines</a>
 	</div>
 </body>
 </html>

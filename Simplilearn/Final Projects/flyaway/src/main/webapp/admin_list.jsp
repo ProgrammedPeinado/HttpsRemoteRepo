@@ -1,4 +1,3 @@
-<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -20,14 +19,14 @@
 		</table>
 	</div>
 	<div>
-	<h2>Passenger information</h2>
-	<form action="validatepassenger" method="POST">
-	<p>Firstname: <input type="text" name="firstname"value="Firstname"></p>
-	<p>Lastname: <input type="text" name="lastname" value="Lastname"></p>
-	<p>Purchased seats: <input type="text" name="seats" value="Number of seats purchased"></p>
-	<p><input type="hidden" name="flight_id" value=<o:out value="${flightID}"/>></p>
-	<p><input type="submit" value="Submit form" /></p>
-	</form>
+	<table>
+		<c:forEach var="flight" items="${List}">
+		    <tr><c:forEach var="details" items="${flight}" >
+		        <th><c:out value="${details}"/></th>		                             
+		        </c:forEach>
+		    </tr>
+		</c:forEach>
+	</table>
 	</div>
 </body>
 </html>

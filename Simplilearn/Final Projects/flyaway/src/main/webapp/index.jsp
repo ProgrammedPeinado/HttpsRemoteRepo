@@ -43,7 +43,10 @@
             </p>
         </form>
     </div>
-
+	<div>
+	<span></span>
+	<a href="adminservlet">Login as an Administrator</a>
+	</div>
 
 </body>
 

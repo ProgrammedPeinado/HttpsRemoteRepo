@@ -65,9 +65,7 @@ public class FlightList extends HttpServlet
 		try
 		{	
 			List<Flight> res = flightDAO.listFlights(src, dest, date, pass);
-			System.out.println("Starting to loop");
 			request.setAttribute("flightList", res);
-	        System.out.println("Finished looping");
 		}
 		catch(Exception e)
 		{
@@ -80,7 +78,6 @@ public class FlightList extends HttpServlet
 		{
 			
 			request.getRequestDispatcher("flightbook.jsp").forward(request,response);
-			//response.sendRedirect("flightbook.jsp");
 			out.close();
 		}
 		

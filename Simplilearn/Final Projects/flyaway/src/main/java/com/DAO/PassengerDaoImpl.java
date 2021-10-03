@@ -34,7 +34,6 @@ public class PassengerDaoImpl implements PassengerDAO
 		Integer pass_id = null;
 		Session session = factory.openSession();
 		Transaction txn = session.beginTransaction();
-		// save methods adds new row into database table
 		pass_id = (Integer) session.save(passenger);
 		txn.commit();
 		session.close();
