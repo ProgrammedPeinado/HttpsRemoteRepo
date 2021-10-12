@@ -12,17 +12,17 @@ import javax.persistence.Table;
 public class Passenger 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="passenger_id")
-	private int passenger_id;
+	private Integer passenger_id;
 	@Column(name="flight_id")
-	private int flight_id;
+	private Integer flight_id;
 	@Column(name="firstname")
 	private String firstname;
 	@Column(name="lastname")
 	private String lastname;
 	@Column(name="seats_purchased")
-	private int seats_purchased;
+	private Integer seats_purchased;
 	
 	public Passenger()
 	{

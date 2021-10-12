@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Admin 
 {	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="username")
 	private String user;
 	@Column(name="password")

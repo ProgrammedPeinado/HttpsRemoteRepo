@@ -12,9 +12,9 @@ import javax.persistence.Table;
 public class Flight 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="flight_id")
-	private int id;
+	private Integer id;
 	@Column(name="src_point")
 	private String source;
 	@Column(name="dest_point")
@@ -24,18 +24,18 @@ public class Flight
 	@Column(name="time_to_board")
 	private String time;
 	@Column(name="price")
-	private double price;
+	private Double price;
 	@Column(name="seat_vacancy")
-	private int seats;
+	private Integer seats;
 	
 	public Flight()
 	{
 	}
 	
-	public Flight(int id, String source, String destination, String date, String time, String price, String seats)
+	public Flight(String id, String source, String destination, String date, String time, String price, String seats)
 	{
 		super();
-		this.id = id;
+		this.id = Integer.parseInt(id);
 		this.source = source;
 		this.destination = destination;
 		this.date = date;
@@ -44,7 +44,7 @@ public class Flight
 		this.seats = Integer.parseInt(seats);
 	}
 	
-	public Flight(int id, String source, String destination, String seats, String date)
+	public Flight(String id, String source, String destination, String seats, String date)
 	{
 		super();
 		this.source = source;
@@ -62,11 +62,11 @@ public class Flight
 		this.date = date;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String id) {
+		this.id = Integer.parseInt(id);
 	}
 	public String getSource() {
 		return source;
@@ -92,16 +92,16 @@ public class Flight
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public int getSeats() {
+	public Integer getSeats() {
 		return seats;
 	}
-	public void setSeats(int seats) {
+	public void setSeats(Integer seats) {
 		this.seats = seats;
 	}
 	@Override

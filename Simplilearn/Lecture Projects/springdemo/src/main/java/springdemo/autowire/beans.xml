@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean class="springdemo.autowire.Pizza" id="pizza1">
+		<property name="name" value="BLT"></property>
+		<property name="category" value="Meat"></property>
+		<property name="crust" value="Double cheese"></property>
+		<property name="cost" value="250"></property>
+	</bean>
+	
+	<bean class="springdemo.autowire.Pizza" id="pizza2">
+		<property name="name" value="Spinach"></property>
+		<property name="category" value="Veg"></property>
+		<property name="crust" value="Quad cheese"></property>
+		<property name="cost" value="220"></property>
+	</bean>
+	
+	<bean class="springdemo.autowire.Pizza" id="pizza3" p:name="Veg Mexicana" p:category="Veg" p:crust="Cheese" p:cost="250"></bean>
+	
+	<bean class="springdemo.autowire.Drink" id="drink1">
+		<property name="name" value="Pepsi"></property>
+		<property name="category" value="Beverage"></property>
+		<property name="cost" value="200"></property>
+	</bean>
+	
+	<bean class="springdemo.autowire.Meal" id="meal1" autowire="byName">
+		<property name="name" value="BigSaver"></property>		
+	</bean>
+	
+	<bean class="springdemo.autowire.Order" id="order1" autowire="constructor">
+		<property name="orderId" value="21"></property>		
+	</bean>
+</beans>

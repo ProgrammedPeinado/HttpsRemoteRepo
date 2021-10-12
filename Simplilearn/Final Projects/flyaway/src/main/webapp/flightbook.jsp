@@ -1,6 +1,8 @@
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,16 +22,13 @@
 	</div>
 	<div>
 	<table>
+		
 		<tr><th>Flight #</th><th>Source</th><th>Destination</th><th>Flight date</th><th>Available seats</th><th>Select</th>
 		<c:forEach var="flight" items="${flightList}" varStatus="loop">
 		    <tr>
-		    	<td>${loop.index}</td>
-		    	<th>${flight.id} </th>
-		    	<th>${flight.source} </th>
-		    	<th>${flight.destination} </th>
-		    	<th>${flight.date} </th>
-		    	<th>${flight.seats}</th>
-		    	<th><a href="validateflight?id=<c:out value='${flight.id}' />">Book</a><br></th>
+		    	<td><c:out value= "${flight.id}"/></td>
+		    	<td><c:out value= "${flight.source}"/></td>
+		    	<td><c:out value= "${flight.destination}"/></td>
 		    </tr>
 		</c:forEach>
 	</table>

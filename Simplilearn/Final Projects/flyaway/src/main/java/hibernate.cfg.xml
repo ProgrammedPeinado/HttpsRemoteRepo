@@ -17,6 +17,7 @@
 
       <mapping class="com.dto.Flight"></mapping>
 	  <mapping class="com.dto.Passenger"></mapping>
+	  <mapping class="com.dto.Plane"></mapping>
 	  <mapping class="com.dto.Admin"></mapping>
    </session-factory>
 </hibernate-configuration>          

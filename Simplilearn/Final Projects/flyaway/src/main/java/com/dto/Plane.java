@@ -13,11 +13,11 @@ import javax.persistence.Table;
 public class Plane 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="flight_id")
-	private int flight_id;
+	private Integer flight_id;
 	@Column(name="plane_id")
-	private int plane_id;
+	private Integer plane_id;
 	@Column(name="airline")
 	private String airline;
 	
