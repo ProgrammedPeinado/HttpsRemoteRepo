@@ -14,10 +14,11 @@
       <property name="show_sql">true</property>
       <property name="hibernate.hbm2ddl.auto">update</property> 
       <property name="current_session_context_class">thread</property>
-
+      
+      <mapping class="com.dto.Admin"></mapping>
       <mapping class="com.dto.Flight"></mapping>
 	  <mapping class="com.dto.Passenger"></mapping>
 	  <mapping class="com.dto.Plane"></mapping>
-	  <mapping class="com.dto.Admin"></mapping>
+
    </session-factory>
 </hibernate-configuration>          

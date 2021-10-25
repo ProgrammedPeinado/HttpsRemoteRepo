@@ -1,6 +1,8 @@
 package com.controllers;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,21 +40,24 @@ public class AdminServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		List<Admin> admins = null;
 		AdminDAO adminCheck = new AdminDaoImpl();
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
-		Admin admin = adminCheck.searchAdminByUser(user);
+		
+		//List admin then compare
+		admins = adminCheck.getAdmins();
 		
 		try
 		{
-			if(user.equals(admin.getUser()) & pass.equals(admin.getPass()));
+			for(Admin a : admins)
 			{
-				response.sendRedirect("admin_page.jsp");
+				if(a.getUser().equals(user) & a.getPass().equals(pass));
+				{
+					response.sendRedirect("admin_page.jsp");
+				}
 			}
-			{
-				request.setAttribute("loginResult", true);
-				response.sendRedirect("admin_login.jsp");
-			}
+			
 		}
 		catch(Exception e)
 		{

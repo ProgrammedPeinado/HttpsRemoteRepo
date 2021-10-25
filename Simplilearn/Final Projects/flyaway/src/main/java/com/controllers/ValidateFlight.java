@@ -32,26 +32,19 @@ public class ValidateFlight extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		if (request.getParameter("id") == null)
-		{
-			System.out.println("id is null");
-			response.getWriter().append("The id was nulled");
-		}
-		else
-		{
-			Flight flightID = flightDao.searchFlightById(Integer.parseInt(request.getParameter("id")));
-			request.setAttribute("flight", flightID);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("registration.jsp");
-	        dispatcher.forward(request, response);
-		}
-			
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		System.out.println("The selection just hit Validate flight:"+request.getParameter("selection"));
+		//RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/registration.jsp");
+		request.setAttribute("selection", request.getParameter("selection"));
+		request.getRequestDispatcher("registration.jsp").forward(request, response);
+        
 	}
 
 }

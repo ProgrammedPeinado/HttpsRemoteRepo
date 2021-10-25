@@ -22,9 +22,9 @@
 		</table>
 	</div>
 	<div>
-	<a href="FlightServlet">List all flights</a>
-	<a href="FlightServlet?ListSource">List of sources and destinations</a>
-	<a href="FlightServlet?ListAirlines">List of airlines</a>
+	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listAll"><input type=submit name="option1" value="List all flights"></form><br>
+	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listSources"><input type=submit name="option2" value="List all sources and destinations"></form><br>
+	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listAirlines"><input type=submit name="option3" value="List all airlines"></form><br>
 	</div>
 </body>
 </html>

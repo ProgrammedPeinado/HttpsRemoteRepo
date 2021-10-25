@@ -19,14 +19,20 @@
 		</table>
 	</div>
 	<div>
-	<table>
-		<c:forEach var="flight" items="${List}">
-		    <tr><c:forEach var="details" items="${flight}" >
-		        <th><c:out value="${details}"/></th>		                             
-		        </c:forEach>
-		    </tr>
+		<table>
+		<tr>
+			<c:forTokens items="${props}" delims="," var="prop">
+				<td><h2><c:out value="${prop}"></c:out></h2></td>
+			</c:forTokens>
+		</tr>
+		<c:forEach var="object" items="${List}" varStatus="loop">
+			<tr>
+				<c:forTokens items="${props}" delims="," var="prop">
+				<td>${object[prop]}</td>
+				</c:forTokens>
+			</tr>
 		</c:forEach>
-	</table>
+		</table>
 	</div>
 </body>
 </html>

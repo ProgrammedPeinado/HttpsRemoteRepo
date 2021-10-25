@@ -25,6 +25,16 @@
     <url-pattern>/validatepassenger</url-pattern>
   </servlet-mapping>
 
+	<servlet>
+    <description></description>
+    <display-name>FlightServlet</display-name>
+    <servlet-name>FlightServlet</servlet-name>
+    <servlet-class>com.controllers.FlightServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    <servlet-name>FlightServlet</servlet-name>
+    <url-pattern>/flightservlet</url-pattern>
+ 	 </servlet-mapping>
 
   <servlet>
     <description></description>
@@ -37,10 +47,20 @@
     <url-pattern>/flightlist</url-pattern>
   </servlet-mapping>
 
-
 	<servlet>
     <description></description>
-    <display-name>AdminServlett</display-name>
+    <display-name>Confirmation</display-name>
+    <servlet-name>Confirmation</servlet-name>
+    <servlet-class>com.controllers.Confirmation</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    <servlet-name>Confirmation</servlet-name>
+    <url-pattern>/confirmation</url-pattern>
+  	</servlet-mapping>
+  
+	<servlet>
+    <description></description>
+    <display-name>AdminServlet</display-name>
     <servlet-name>AdminServlet</servlet-name>
     <servlet-class>com.controllers.AdminServlet</servlet-class>
   </servlet>

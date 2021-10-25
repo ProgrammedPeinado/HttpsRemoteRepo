@@ -3,7 +3,7 @@ package com.DAO;
 import java.io.PrintWriter;
 import java.util.List;
 
-
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -13,6 +13,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import com.dto.Flight;
@@ -71,18 +72,22 @@ public class FlightDaoImpl implements FlightDAO{
 	public List<Flight> listFlights(String src, String dest) 
 	{
 		List<Flight> flights = null;
+		Configuration conf = new Configuration().configure();
+		conf.addAnnotatedClass(com.dto.Flight.class);
+		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(conf.getProperties());
+		SessionFactory factory = conf.buildSessionFactory(builder.build());
+		
 		Session session  = factory.openSession();
 		Transaction txn = session.beginTransaction();
 
-		String hql = "SELECT fli.source, fli.destination, FROM Flight AS fli";
+		String hql = "FROM Flight AS fli";
 
 		TypedQuery<Flight> query = session.createQuery(hql);
-		query.setParameter("source", src);
-		query.setParameter("destination", dest);
 
 		flights = query.getResultList();
+
 		session.close();
-		return flights;
+		return (List<Flight>)flights;
 	}	
 	
 	@Override
@@ -92,24 +97,29 @@ public class FlightDaoImpl implements FlightDAO{
 		Session session  = factory.openSession();
 		Transaction txn = session.beginTransaction();
 
-		String hql = "SELECT fli.id, fli.source, fli.destination, fli.date, fli.seats FROM Flight AS fli WHERE ((fli.source =:source"+
-						") AND (fli.destination =:destination"+
-						") AND (fli.seats >=:seats"+
-						") AND (fli.date >=:date))";
-
-		TypedQuery<Flight> query = session.createQuery(hql);
+		String hql = "FROM Flight AS fli WHERE ((fli.source =:source"+
+				") AND (fli.destination =:destination"+
+				") AND (fli.seats >=:seats"+
+				") AND (fli.date >=:date))";
+	
+		Query<Flight> query = session.createQuery(hql);
+		
 		query.setParameter("source", src);
 		query.setParameter("destination", dest);
 		query.setParameter("seats", seats);
 		query.setParameter("date", date);
 		
-		flights = query.getResultList();
+		flights = query.list();
+		
+		//flights = query.getResultList();
+
 		session.close();
-		return flights;
+		return (List<Flight>)flights;
 	}	
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Flight> listFlights() 
+	public List<Flight>listFlights() 
 	{
 		List<Flight> flights = null;
 		Session session  = factory.openSession();
@@ -117,20 +127,25 @@ public class FlightDaoImpl implements FlightDAO{
 
 		String hql = "From Flight";
 
+		
 		TypedQuery<Flight> query = session.createQuery(hql);
 		
 		flights = query.getResultList();
 		session.close();
-		return flights;
+		return (List<Flight>)flights;
 	}
 	
 	@Override
 	public Flight searchFlightById(Integer flightID) {
+		Flight flight = new Flight();
 		Session session  = factory.openSession();
 		Transaction txn = session.beginTransaction();
-		String hql = "FROM Flight = "+ flightID;
-		TypedQuery<Flight> query = session.createQuery(hql);
-		Flight flight = query.getSingleResult();
+		String hql = "FROM Flight AS fli WHERE fli.id = :flight_id";
+		System.out.println("\n ================ DEBUG:"+hql+"============\n");
+		Query<Flight> query = session.createQuery(hql);
+		query.setParameter("flight_id", flightID);
+		flight = query.getSingleResult();
+		System.out.println("\n ================ DEBUG \nLeaving the single search");
 		return flight;
 	}
 }

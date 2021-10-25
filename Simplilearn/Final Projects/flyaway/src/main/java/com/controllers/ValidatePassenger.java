@@ -44,21 +44,22 @@ public class ValidatePassenger extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-
-		if (request.getParameter("id") == null)
-		{
-			System.out.println("id is null");
-			response.getWriter().append("The id was nulled");
-		}
-		else
-		{
-			Passenger passenger = passDao.searchPassengerById(Integer.parseInt(request.getParameter("id")));
-			Flight flight = flightDao.searchFlightById(passenger.getFlight_id());
-			request.setAttribute("passenger", passenger);
-			request.setAttribute("flight", flight);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("summary.jsp");
-	        dispatcher.forward(request, response);
-		}
+		Passenger pass = new Passenger();
+		Flight flight = new Flight();
+		FlightDaoImpl fdao = new FlightDaoImpl();
+		
+		System.out.println("This is the submission parameter:"+request.getParameter("submission"));
+		pass.setFirstname(request.getParameter("firstname"));
+		pass.setLastname(request.getParameter("lastname"));
+		pass.setFlight_id(Integer.parseInt(request.getParameter("submission")));
+		pass.setSeats_purchased(Integer.parseInt(request.getParameter("seats")));
+		
+		flight = fdao.searchFlightById(Integer.parseInt(request.getParameter("submission")));
+		System.out.println("\n ===========\n DEBUG Back to post after single object search");
+		
+		request.setAttribute("flight", flight);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("summary.jsp");
+    	dispatcher.forward(request, response);
 	}
 
 }

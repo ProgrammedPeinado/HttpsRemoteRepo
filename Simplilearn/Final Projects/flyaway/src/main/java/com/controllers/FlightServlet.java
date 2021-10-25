@@ -1,6 +1,7 @@
 package com.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -35,38 +36,54 @@ public class FlightServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String adminOptions = request.getParameter("selection");
+		String adminOptions = request.getParameter("submittion");
 		FlightDAO flightDAO = new FlightDaoImpl();
 		PlaneDAO planeDAO = new PlaneDaoImpl();
 		String source = null; //to identify the parametrized method
 		String dest = null; //
 		List<Flight> res = null;
 		List<Plane> resAir = null;
+		PrintWriter out = response.getWriter();
 		
-		if(adminOptions ==null);
+		if(adminOptions ==null)
+		{
 			adminOptions = "none";
-			
+		}
+		System.out.println("\n ==================== \nThis is the adminOptions output");	
 		switch(adminOptions)
 		{
 			case "listSources":
 			{
-				res = flightDAO.listFlights(source, dest);
+				System.out.println("Getting all sources and destinations");
+				String props = "source,destination";
+				res = flightDAO.listFlights();
+				
+				
+				request.setAttribute("props", props);
 				request.setAttribute("List", res);
-				response.sendRedirect("admin_list.jsp");
+				request.getRequestDispatcher("admin_list.jsp").forward(request,response);
 				break;
 			}
 			case "listAirlines":
 			{
+				System.out.println("Getting all airlines");
+				String props = "airline";
 				resAir = planeDAO.listAirlines();
+				
+				request.setAttribute("props", props);
 				request.setAttribute("List", resAir);
-				response.sendRedirect("admin_list.jsp");
+				request.getRequestDispatcher("admin_list.jsp").forward(request,response);
 				break;
 			}
 			default:
 			{
+				System.out.println("Getting all flights");
+				String props = "id,source,destination,date,seats";
 				res = flightDAO.listFlights();
+				
+				request.setAttribute("props", props);
 				request.setAttribute("List", res);
-				response.sendRedirect("admin_list.jsp");
+				request.getRequestDispatcher("admin_list.jsp").forward(request,response);
 				break;
 			}
 		}

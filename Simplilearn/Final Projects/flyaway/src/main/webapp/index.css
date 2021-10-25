@@ -6,9 +6,11 @@
     text-align: center;
 }
 
-table tr td th {
+table, form{
+	width: 100%; }
+
+table, tr, td, th {
 	color: black;
-	display: inline;
 	text-align: center;
 }
 
@@ -35,7 +37,7 @@ a {
     padding: 10px;
 }
 
-ul li {
+ul, li {
     background-color: #BCE2F5;
     border: 2px;
     border-style: solid;

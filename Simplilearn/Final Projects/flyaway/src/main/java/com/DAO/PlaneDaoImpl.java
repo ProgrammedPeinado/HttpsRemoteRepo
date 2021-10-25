@@ -11,6 +11,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 import com.dto.Passenger;
 import com.dto.Plane;
@@ -91,11 +92,11 @@ private SessionFactory factory;
 		Session session  = factory.openSession();
 		Transaction txn = session.beginTransaction();
 
-		String hql = "Select Plane.airline From Plane";
+		String hql = "Select distinct p From Plane p";
 
-		TypedQuery<Plane> query = session.createQuery(hql);
+		Query<Plane> query = session.createQuery(hql);
 		
-		planes = query.getResultList();
+		planes = query.list();
 		session.close();
 		return planes;
 	}

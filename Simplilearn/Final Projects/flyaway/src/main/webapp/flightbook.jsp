@@ -20,18 +20,22 @@
 		    </tr>
 		</table>
 	</div>
+	
 	<div>
-	<table>
-		
-		<tr><th>Flight #</th><th>Source</th><th>Destination</th><th>Flight date</th><th>Available seats</th><th>Select</th>
-		<c:forEach var="flight" items="${flightList}" varStatus="loop">
-		    <tr>
-		    	<td><c:out value= "${flight.id}"/></td>
-		    	<td><c:out value= "${flight.source}"/></td>
-		    	<td><c:out value= "${flight.destination}"/></td>
-		    </tr>
-		</c:forEach>
-	</table>
+	Flight#Source &emsp; Destination &emsp; Flight_date&emsp; Available_seats&emsp; Price&emsp; Select
+	<c:forEach var="flight" items="${flightList}" varStatus="loop">
+	    	<form action="validateflight" method="POST">
+	    	<c:out value= "${flight.id}"/>&emsp;&emsp;
+	    	<c:out value= "${flight.source}"/>&emsp;&emsp;
+	    	<c:out value= "${flight.destination}"/>&emsp;&emsp;
+	    	<c:out value= "${flight.date}"/>&emsp;&emsp;
+	    	<c:out value= "${flight.seats}"/>&emsp;&emsp;
+	    	<c:out value= "${flight.price}"/>&emsp;&emsp;
+	    	<c:set var="index" value="${loop.count}" />
+	    	<input type="hidden" value="${flight.id}" name="selection">
+	    	<input type="submit" value="Book it!">
+	    	</form>	    
+	</c:forEach>
 	</div>
 </body>
 </html>

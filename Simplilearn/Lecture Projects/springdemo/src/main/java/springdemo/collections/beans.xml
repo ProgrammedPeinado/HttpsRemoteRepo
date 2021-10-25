@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	
+		<!-- Pizza pizza = new Pizza(); -->
+	<bean class="springdemo.collections.Pizza" id="pizza1">
+		<property name="name" value="BLT"></property>
+		<property name="category" value="Meat"></property>
+		<property name="crust" value="Double cheese"></property>
+		<property name="cost" value="250"></property>
+		<property name="toppings">
+			<list>
+				<value>Paneer</value>
+				<value>Tomato</value>
+				<value>Capsicum</value>
+				<value>Cheese</value>
+				<value>Mushroom</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean class="springdemo.collections.Drink" id="drink1">
+		<property name="name" value="Pepsi"></property>
+		<property name="category" value="Beverage"></property>
+		<property name="cost" value="200"></property>
+	</bean>
+	
+	<bean class="springdemo.collections.Pizza" id="pizza2">
+		<property name="name" value="Spinach"></property>
+		<property name="category" value="Veg"></property>
+		<property name="crust" value="Quad cheese"></property>
+		<property name="cost" value="220"></property>
+	</bean>
+	<bean class="springdemo.collections.Pizza" id="pizza3" p:name="Veg Mexicana" p:category="Veg" p:crust="Cheese" p:cost="250"></bean>
+	
+	<bean class="springdemo.collections.Meal" id="meal1">
+		<property name="pizza" ref="pizza1"></property>
+		<property name="drink" ref="drink1"></property>		
+	</bean> 
+	<bean class="springdemo.collections.Meal" id="meal2">
+		<property name="pizza" ref="pizza2"></property>
+		<property name="drink" ref="drink1"></property>		
+	</bean>
+	<bean class="springdemo.collections.Meal" id="meal3">
+		<property name="pizza" ref="pizza3"></property>
+		<property name="drink" ref="drink1"></property>		
+	</bean>
+	
+	<bean class="springdemo.collections.Order" id="order1">
+		<property name="OrderId" value="2"></property>
+		<property name="meals" value="Jose">
+			<list>
+				<ref bean="meal1"></ref>
+				<ref bean="meal2"></ref>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="springdemo.collections.Order" id="order2">
+		<property name="OrderId" value="3"></property>
+		<property name="meals" value="Pedro">
+			<list>
+				<ref bean="meal1"></ref>
+				<ref bean="meal3"></ref>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="springdemo.collections.Customer" id="customer1">
+		<property name="customerId" value="1"></property>
+		<property name="customerName" value="Jose"></property>
+		<property name="address">
+			<set>
+				<value>ABC Apt, Delhi</value>
+				<value>XYZ Villa, Delhi</value>
+			</set>
+		</property>
+		
+		<property name="specificAddress">
+			<map>
+				<entry key="Home" value="ABC Apt, Delhi"></entry>
+				<entry key="Office" value="XYZ IT Park, Delhi"></entry>
+			</map>
+		</property>
+		
+		<property name="orders">
+			<map>
+				<entry key="1" value-ref="order1"></entry>
+				<entry key="1" value-ref="order2"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	
+</beans>

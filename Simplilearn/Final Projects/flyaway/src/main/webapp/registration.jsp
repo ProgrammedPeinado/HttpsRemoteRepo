@@ -25,7 +25,7 @@
 	<p>Firstname: <input type="text" name="firstname"value="Firstname"></p>
 	<p>Lastname: <input type="text" name="lastname" value="Lastname"></p>
 	<p>Purchased seats: <input type="text" name="seats" value="Number of seats purchased"></p>
-	<p><input type="hidden" name="flight_id" value=<o:out value="${flightID}"/>></p>
+	<input type="hidden" value="${selection}" name="submission"/>
 	<p><input type="submit" value="Submit form" /></p>
 	</form>
 	</div>

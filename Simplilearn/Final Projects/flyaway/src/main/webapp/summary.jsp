@@ -22,13 +22,17 @@
 	<div>
 	<h2>Please revise the details of your flight below</h2>
 	<br>
+	
 	<table>
 	<tr><th>Flight #</th><th>Source</th><th>Destination</th><th>Flight date</th><th>Available seats</th><th>Select</th>
-		<c:forEach var="details" items="${flight}">
-		<th><c:out value="${details}"/></th>		                             
-		</c:forEach>
-		<th><a href="paymentConfirmed">Confirm Payment</a><br></th>
+		<c:set var="properties">id,source,destination,date,seats</c:set>
+		<tr><c:forTokens var="prop" delims="," items="${properties}">
+		<th><c:out value="${flight[prop]}"/></th>		                             
+		</c:forTokens></tr>
 	</table>
+	<p><a href="confirmation">Confirm Payment</a></p>
+	<br><br>
+
 	</div>
 </body>
 </html>

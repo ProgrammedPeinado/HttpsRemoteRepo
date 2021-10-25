@@ -36,16 +36,16 @@ public class Passenger
 		this.seats_purchased = seats_purchased;
 	}
 	
-	public int getPassenger_id() {
+	public Integer getPassenger_id() {
 		return passenger_id;
 	}
-	public void setPassenger_id(int passenger_id) {
+	public void setPassenger_id(Integer passenger_id) {
 		this.passenger_id = passenger_id;
 	}
-	public int getFlight_id() {
+	public Integer getFlight_id() {
 		return flight_id;
 	}
-	public void setFlight_id(int flight_id) {
+	public void setFlight_id(Integer flight_id) {
 		this.flight_id = flight_id;
 	}
 	public String getFirstname() {

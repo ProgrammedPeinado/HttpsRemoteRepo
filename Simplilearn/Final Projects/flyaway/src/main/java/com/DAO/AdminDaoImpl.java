@@ -63,12 +63,15 @@ private SessionFactory factory;
 	}	
 	
 	@Override
-	public Admin searchAdminByUser(String admin) {
+	public List<Admin> getAdmins() {
+		List<Admin> admins = null;
 		Session session  = factory.openSession();
+		
 		Transaction txn = session.beginTransaction();
-		String hql = "SELECT ad.user, ad.pass FROM administrators ad "+"WHERE ad.user="+admin;
+		String hql = "FROM Admin";
+		
 		TypedQuery<Admin> query = session.createQuery(hql);
-		Admin administrator = query.getSingleResult();
-		return administrator;
+		admins = query.getResultList();
+		return admins;
 	}
 }
