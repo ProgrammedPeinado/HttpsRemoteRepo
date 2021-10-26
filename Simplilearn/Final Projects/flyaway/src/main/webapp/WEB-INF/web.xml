@@ -68,4 +68,15 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/adminservlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>PasswordChange</display-name>
+    <servlet-name>PasswordChange</servlet-name>
+    <servlet-class>com.controllers.PasswordChange</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PasswordChange</servlet-name>
+    <url-pattern>/passwordchange</url-pattern>
+  </servlet-mapping>
 </web-app>

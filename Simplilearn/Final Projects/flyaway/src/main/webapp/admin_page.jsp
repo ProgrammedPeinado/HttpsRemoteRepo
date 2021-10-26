@@ -22,9 +22,11 @@
 		</table>
 	</div>
 	<div>
-	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listAll"><input type=submit name="option1" value="List all flights"></form><br>
-	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listSources"><input type=submit name="option2" value="List all sources and destinations"></form><br>
-	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listAirlines"><input type=submit name="option3" value="List all airlines"></form><br>
+	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listAll"><input type=submit name="option1" value="List all flights"></form>
+	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listSources"><input type=submit name="option2" value="List all sources and destinations"></form>
+	<p><form action=flightservlet method="POST"><input type="hidden" name="submittion" value="listAirlines"><input type=submit name="option3" value="List all airlines"></form>
+	<br>
+	<a href="/flyaway/passwordChange.jsp">Change password</a>
 	</div>
 </body>
 </html>
