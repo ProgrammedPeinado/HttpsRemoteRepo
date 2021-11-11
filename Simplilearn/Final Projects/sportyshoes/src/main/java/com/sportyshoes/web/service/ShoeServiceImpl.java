@@ -29,7 +29,7 @@ public class ShoeServiceImpl implements ShoeService
 	}
 
 	@Override
-	public Map<String, ArrayList<String>> getShoeTags() 
+	public Map<String, ArrayList<Shoe>> getShoeTags() 
 	{
 		return shoeDao.getShoeTags();
 	}

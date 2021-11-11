@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.sportyshoes.web.model.Shoe;
 import com.sportyshoes.web.service.ShoeService;
 
 @Controller
@@ -20,7 +21,7 @@ public class ShoeController
 	@RequestMapping("/getShoes")
 	public ModelAndView getShoes()
 	{
-		Map<String, ArrayList<String>> shoes = shoeService.getShoeTags();
+		Map<String, ArrayList<Shoe>> shoes = shoeService.getShoeTags();
 		ModelAndView modelAndView = new ModelAndView("displayshoes");
 		modelAndView.addObject("shoes", shoes);
 		return modelAndView;

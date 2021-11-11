@@ -58,8 +58,8 @@ public class ShoeDaoImpl extends JdbcDaoSupport implements ShoeDao
 	}
 
 	@Override
-	public Map<String, ArrayList<String>> getShoeTags() {
-		Map<String, ArrayList<String>> shoes = new HashMap<>();
+	public Map<String, ArrayList<Shoe>> getShoeTags() {
+		Map<String, ArrayList<Shoe>> shoes = new HashMap<>();
 		
 		
 		String sql = "select * from shoes";
@@ -67,13 +67,18 @@ public class ShoeDaoImpl extends JdbcDaoSupport implements ShoeDao
 		
 		for(Map<String, Object> keys: shoeData)
 		{
-			ArrayList<String> values = new ArrayList<String>();
+			ArrayList<Shoe> values = new ArrayList<Shoe>();
 			
 			for(Map<String, Object> value : shoeData)
 			{
 				if(value.get("tag").equals(keys.get("tag")))
 				{
-					values.add((String)value.get("id"));	
+					Shoe shoe = new Shoe();
+					shoe.setShoe_id((Integer)value.get("shoe_id"));
+					shoe.setShoe_name((String)value.get("shoe_name"));
+					shoe.setTag((String)value.get("tag"));
+					shoe.setThumbnail((String)value.get("thumbnail"));
+					values.add(shoe);	
 				}
 				
 			}
@@ -87,7 +92,8 @@ public class ShoeDaoImpl extends JdbcDaoSupport implements ShoeDao
 	}
 
 	@Override
-	public Shoe searchShoe(int id) {
+	public Shoe searchShoe(int id) 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
