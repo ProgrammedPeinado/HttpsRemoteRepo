@@ -16,11 +16,12 @@ public class TransactionController
 	@Autowired
 	private TransactionService transactionService;
 	
-	@RequestMapping("getTransactions")
+	@RequestMapping("/getTransactions")
 	public ModelAndView getAllTransactions()
 	{
 		List<Transaction> transactions = transactionService.getAllTransactions();
 		ModelAndView modelAndView = new ModelAndView("displaytransactions");
+		modelAndView.addObject("transactions", transactions);
 		return modelAndView;
 	}
 }

@@ -12,7 +12,7 @@
 		<img src="/images/Sport_shoe.jpg" height=200px	width=200px>
 		<a href="/home">Home</a>
 		<a href="/addUser">User registration</a>
-		<a href="/products">Shoes!</a>
+		<a href="/getShoes">Shoes!</a>
 	</div>
 		
 	<div class="content">

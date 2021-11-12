@@ -14,10 +14,21 @@
 		<a href="/addUser">User registration</a>
 		<a href="/getShoes">Shoes!</a>
 	</div>
-
-<div class="content">
-<h1>User registration successful!</h1>
-We hope you'll enjoy our newsletter of deals and shoe selections.
-</div>
+<div>
+		<table>
+		<tr>
+			<c:forTokens items="${props}" delims="," var="prop">
+				<td><h2><c:out value="${prop}"></c:out></h2></td>
+			</c:forTokens>
+		</tr>
+		<c:forEach var="object" items="${List}" varStatus="loop">
+			<tr>
+				<c:forTokens items="${props}" delims="," var="prop">
+				<td>${object[prop]}</td>
+				</c:forTokens>
+			</tr>
+		</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

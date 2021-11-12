@@ -14,10 +14,6 @@
 		<a href="/addUser">User registration</a>
 		<a href="/getShoes">Shoes!</a>
 	</div>
-
-<div class="content">
-<h1>User registration successful!</h1>
-We hope you'll enjoy our newsletter of deals and shoe selections.
-</div>
+	
 </body>
 </html>

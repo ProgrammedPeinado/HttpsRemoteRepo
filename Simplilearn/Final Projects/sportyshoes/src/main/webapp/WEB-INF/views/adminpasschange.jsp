@@ -15,9 +15,11 @@
 		<a href="/getShoes">Shoes!</a>
 	</div>
 
-<div class="content">
-<h1>User registration successful!</h1>
-We hope you'll enjoy our newsletter of deals and shoe selections.
-</div>
+<form action="/passwordChange" method="POST">
+Enter old password: <input type="password" name="oldpass" value="Old Password"><br>
+Enter new password: <input type="password" name="newpass" value="New Password"><br>
+<input type="hidden" name="admin" value="${admin} }">
+<input type="submit" value="Submit Changes">
+</form>
 </body>
 </html>

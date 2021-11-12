@@ -3,10 +3,12 @@ package com.sportyshoes.web.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sportyshoes.web.dao.TransactionDaoImpl;
 import com.sportyshoes.web.model.Transaction;
 
+@Service
 public class TransactionServiceImpl implements TransactionService 
 {
 	@Autowired
