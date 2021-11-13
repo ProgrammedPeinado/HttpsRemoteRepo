@@ -1,6 +1,6 @@
 package com.sportyshoes.web.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Transaction 
 {
@@ -8,7 +8,7 @@ public class Transaction
 	private int buyer_id;
 	private int product_id;
 	private String category;
-	private Date transaction_date;
+	private LocalDateTime transaction_date;
 
 	public int getTransaction_id() {
 		return transaction_id;
@@ -42,11 +42,11 @@ public class Transaction
 		this.category = category;
 	}
 
-	public Date getTransaction_date() {
+	public LocalDateTime getTransaction_date() {
 		return transaction_date;
 	}
 
-	public void setTransaction_date(Date transaction_date) {
+	public void setTransaction_date(LocalDateTime transaction_date) {
 		this.transaction_date = transaction_date;
 	}
 	

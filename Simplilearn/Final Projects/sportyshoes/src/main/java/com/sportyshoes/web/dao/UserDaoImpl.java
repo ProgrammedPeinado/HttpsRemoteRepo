@@ -1,5 +1,6 @@
 package com.sportyshoes.web.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao
 	@Override
 	public List<User> getAllUsers() 
 	{
-		List<User> users = null;
+		List<User> users =  new ArrayList();
 		String sql = "select * from user";
 		List<Map<String, Object>> userData = getJdbcTemplate().queryForList(sql);
 		
@@ -51,7 +52,12 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao
 			user.setLastname((String)usr.get("lastname"));
 			user.setPhoneNumber((String)usr.get("phoneNumber"));
 			user.setEmail((String)usr.get("email"));
-			users.add(user);
+			
+			if(user != null)
+			{
+				users.add(user);	
+			}
+			
 		}
 		
 		return users;
@@ -60,7 +66,30 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao
 	@Override
 	public User searchUser(int id) 
 	{
-		return null;
+		boolean flag = false;
+		User user = new User();
+		List<Map<String, Object>> userData= null;
+		String sql = "select * from user where id=?";
+		String check = null;
+		
+		try 
+		{
+			userData = getJdbcTemplate().queryForList(sql, id); //, new Object[] user.getFirstname(), user.getLastname(), user.getPhoneNumber(), user.getEmail(), User.class)
+			for(Map<String, Object> usr: userData)
+			{
+				user.setId((Integer)usr.get("id"));
+				user.setFirstname((String)usr.get("firstname"));
+				user.setLastname((String)usr.get("lastname"));
+				user.setPhoneNumber((String)usr.get("phoneNumber"));
+				user.setEmail((String)usr.get("email"));
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getLocalizedMessage());
+		}
+
+		return user;
 	}
 
 	@Override

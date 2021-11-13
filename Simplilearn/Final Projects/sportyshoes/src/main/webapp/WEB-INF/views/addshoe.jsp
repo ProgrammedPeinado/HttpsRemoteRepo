@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,14 @@
 		<a href="/getShoes">Shoes!</a>
 	</div>
 	<div class="content">
-	<h1>We could not verify your credentials. Try again in a bit.</h1>	
+	<h1>Add new shoe:</h1>
+	<form action="/addShoe">
+	Shoe's name: <input type="text" name="name" value=""><br>
+	Shoe's category: <input type="text" name="tag" value=""><br>
+	Shoe's thumbnail: <input type="text" name="thumbnail" value=""><br>
+	<input type="hidden" name="submission" value="add">
+	<input type="submit" value="Submit inputs">
+	</form>
 	</div>
 </body>
 </html>

@@ -14,12 +14,14 @@
 		<a href="/addUser">User registration</a>
 		<a href="/getShoes">Shoes!</a>
 	</div>
-
+<div class="content">
+<h2>Password change</h2>
 <form action="/passwordChange" method="POST">
-Enter old password: <input type="password" name="oldpass" value="Old Password"><br>
-Enter new password: <input type="password" name="newpass" value="New Password"><br>
+Enter old password: <input type="password" name="oldpass" value=""><br>
+Enter new password: <input type="password" name="newpass" value=""><br>
 <input type="hidden" name="admin" value="${admin} }">
 <input type="submit" value="Submit Changes">
 </form>
+</div>
 </body>
 </html>

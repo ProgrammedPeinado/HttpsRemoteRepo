@@ -1,6 +1,7 @@
 package com.sportyshoes.web.controller;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sportyshoes.web.model.Admin;
 import com.sportyshoes.web.service.AdminService;
+import com.sportyshoes.web.service.ShoeService;
 
 
 
@@ -19,14 +21,23 @@ public class AdminController
 	@Autowired
 	private AdminService adminService;
 	
+	@Autowired
+	private ShoeService shoeService;
+	
 	@RequestMapping("/adminLogin")
 	public String getAdminLogin()
 	{
 		return "admin_login";
 	}
 	
+	@RequestMapping("/adminPassChangePage")
+	public String getAdminPassChange()
+	{
+		return "adminpasschange";
+	}
+	
 	@RequestMapping("/authenticate")
-	public ModelAndView authentication(@RequestParam("username") String user, @RequestParam("pass") String pass)
+	public ModelAndView authentication(@RequestParam("user") String user, @RequestParam("pass") String pass)
 	{
 		Admin admin = new Admin();
 		admin.setUser(user);
@@ -44,32 +55,25 @@ public class AdminController
 	}
 	
 	@RequestMapping("/passwordChange")
-	public ModelAndView passwordChange(@RequestParam("oldpass") String oldpass, @RequestParam("newpass") String newpass, @RequestParam("pass") String pass)
+	public ModelAndView passwordChange(@RequestParam("oldpass") String oldpass, @RequestParam("newpass") String newpass)
 	{
-		List<Admin> admins = null;
+		List<Admin> admins = adminService.getAllAdmins();
+		Admin a = new Admin();
+		a.setUser(admins.get(0).getUser());
+		a.setPass(admins.get(0).getPass());
 		boolean flag = false;
-		try
+		
+		if(a.getPass().equals(oldpass))
 		{
-			for(Admin a : admins)
-			{
-				if(pass.equals(oldpass))
-				{
-					ModelAndView modelAndView = new ModelAndView("changepass_success");
-					flag = adminService.updateAdmin(a.getUser(), newpass);
-					return modelAndView;
-				} else {
-					ModelAndView modelAndView = new ModelAndView("failedadmin");
-				  return modelAndView;
-				}
-			}
+			ModelAndView modelAndView = new ModelAndView("changepass_success");
+			flag = adminService.updateAdmin(a.getUser(), newpass);
+			if(flag != false)
+				return modelAndView;
+		} else {
+			ModelAndView modelAndView = new ModelAndView("failedadmin");
+		  return modelAndView;
 		}
-		catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-		}
-		finally
-		{
-			return new ModelAndView("home");
-		}
+		ModelAndView modelAndView = new ModelAndView("home");
+		return modelAndView;
 	}
 }

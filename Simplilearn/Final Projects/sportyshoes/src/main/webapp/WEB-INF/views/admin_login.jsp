@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>User registration</title>
+	<title>Admin login</title>
 	<link rel="stylesheet" type="text/css" href="/style/style.css" media="all" />
 </head>
 <body>
@@ -14,6 +14,13 @@
 		<a href="/addUser">User registration</a>
 		<a href="/getShoes">Shoes!</a>
 	</div>
-
+	<div class ="content">
+	<h1>Admin login</h1>
+	<form action="/authenticate" method="POST">
+	Username: <input type="text" name="user" value=""><br>
+	Password: <input type="password" name="pass" value="">
+	<input type="submit" value="Submit form" />	
+	</form>
+	</div>
 </body>
 </html>

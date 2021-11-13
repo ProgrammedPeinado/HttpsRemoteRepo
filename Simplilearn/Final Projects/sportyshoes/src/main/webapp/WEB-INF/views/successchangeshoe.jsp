@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
 		<a href="/getShoes">Shoes!</a>
 	</div>
 	<div class="content">
-	<h1>We could not verify your credentials. Try again in a bit.</h1>	
+	<h1>Your changes to the shoe tables have been successful.</h1>	
 	</div>
 </body>
 </html>

@@ -18,14 +18,17 @@
 	<div class="content">
 		
 		<h1>User registration</h1>
+		<p>If you are already a registered user then you don't need to fill out this form again.</p>
 		<form method="POST" action="addNewUser">
-		Firstname:<input type="text" value="" name="firstname"><br>
-		Lastname:<input type="text" value="" name="lastname"><br>
-		Phone number:<input type="text" value="" name="phoneNumber"><br>
-		Email:<input type="text" value="" name="email"><br>
-		<input type="submit" value="Submit registration">
-		</form>
+		<table>
+		<tr><td>Firstname:</td><td><input type="text" value="" name="firstname"></td></tr>
+		<tr><td>Lastname:</td><td><input type="text" value="" name="lastname"></td></tr>
+		<tr><td>Phone number:</td><td><input type="text" value="" name="phoneNumber"></td></tr>
+		<tr><td>Email:</td><td><input type="text" value="" name="email"></td></tr>
+		<tr><td></td><td><input type="submit" value="Submit registration"></td></tr>
+		</table>
 		
+		</form>
 	</div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.sportyshoes.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,12 @@ public class AdminServiceImpl implements AdminService {
 	public boolean authenticate(Admin admin) 
 	{
 		return adminDao.authenticate(admin);
+	}
+	
+	@Override
+	public List<Admin> getAllAdmins()
+	{
+		return adminDao.getAllAdmins();
 	}
 
 }

@@ -24,6 +24,25 @@ public class UserController
 		return "adduser";
 	}
 	
+	@RequestMapping("/updateUser")
+	public String getUpdateUser()
+	{
+		return "updateUser";
+	}
+	
+	@RequestMapping("/searchUserPage")
+	public String getSearchUser()
+	{
+		return "searchuser";
+	}
+	@RequestMapping("/searchUser")
+	public ModelAndView searchUser(@RequestParam("id") String id)
+	{
+		ModelAndView modelAndView = new ModelAndView("searchsuccess");
+		modelAndView.addObject("user", userService.searchUser(Integer.parseInt(id)));
+		return modelAndView;
+	}
+	
 	@RequestMapping("/addNewUser")
 	public String addUser(@ModelAttribute("user") User user)
 	{
@@ -36,11 +55,7 @@ public class UserController
 		return "addsuccess";
 	}
 	
-	@RequestMapping("/updateUser")
-	public String getUpdateUser()
-	{
-		return "updateUser";
-	}
+	
 	
 	@RequestMapping("/updateNewUser")
 	public String updateUser(@RequestParam("id") int id, @RequestParam("password") String password)
@@ -55,7 +70,7 @@ public class UserController
 		return viewName;	
 	}
 	
-	@RequestMapping("/getAllUsers")
+	@RequestMapping("/listUsers")
 	public ModelAndView getAllUsers()
 	{
 		List<User> allUsers = userService.getAllUsers();

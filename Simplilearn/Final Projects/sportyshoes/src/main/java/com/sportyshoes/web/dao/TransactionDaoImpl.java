@@ -1,6 +1,7 @@
 package com.sportyshoes.web.dao;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +39,7 @@ public class TransactionDaoImpl extends JdbcDaoSupport implements TransactionDao
 
 	@Override
 	public List<Transaction> getAllTransactions() {
-		List<Transaction> transactions = null;
+		List<Transaction> transactions = new ArrayList<Transaction>();
 		String sql = "select * from transactions ORDER BY category,transaction_date ASC";
 		List<Map<String, Object>> transactionData = getJdbcTemplate().queryForList(sql);
 		
@@ -49,8 +50,12 @@ public class TransactionDaoImpl extends JdbcDaoSupport implements TransactionDao
 			trans.setBuyer_id((Integer)t.get("Buyer_id"));
 			trans.setProduct_id((Integer)t.get("product_id"));
 			trans.setCategory((String)t.get("category"));
-			trans.setTransaction_date((Date)t.get("transaction_date"));
-			transactions.add(trans);
+			trans.setTransaction_date((LocalDateTime)t.get("transaction_date"));
+			
+			if(trans !=null)
+			{	
+				transactions.add(trans);	
+			}
 		}
 		
 		return transactions;
