@@ -1,0 +1,24 @@
+<div>
+  <br>
+  <mat-card class="card-body">
+    <section class="mat-typography">
+      <h3>Admin Login Portal</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)" class="update-form">
+      <mat-label for="inputUsername" class="sr-only">Username</mat-label>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Username" formControlName="userName" #username>
+      </mat-form-field>
+      <br>
+      <mat-label for="inputPassword" class="sr-only">Password</mat-label>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Password" formControlName="password" #password>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button class="btn btn-sm btn-primary" type="submit">Sign in</button>
+    </form>
+  </mat-card>
+</div>

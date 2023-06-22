@@ -1,0 +1,50 @@
+.home-container
+{
+  display: block;
+  height: 1000px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.home-sidenav-content {
+  display: flex;
+  height: auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-sidenav
+{
+  align-items: left;
+  justify-content: left;
+  padding: 60px;
+}
+
+table
+{
+  width: 100%;
+}
+
+.mat-column-right {
+  text-align: center;
+}
+
+.mat-toolbar-row
+{
+  align-items: right;
+  text-align: right;
+}
+
+.mat-card,
+.mat-table,
+.mat-header-row,
+.mat-header-cell,
+.mat-cell,
+.matt-row.name-col
+{
+  padding: 10px;
+  width: 100%;
+}
+
