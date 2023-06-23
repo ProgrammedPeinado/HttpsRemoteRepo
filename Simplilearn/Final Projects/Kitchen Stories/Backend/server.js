@@ -21,6 +21,7 @@ const router = express.Router();
 
 app.use(bodyParser.json());
 
+/*
 app.use((req, res, next) =>
 {
     res.header('Access-Control-Allow-Origin', '*');
@@ -36,6 +37,7 @@ app.use((req, res, next) =>
         next();
     }
 });
+ */
 
 mongoose.connect('mongodb://127.0.0.1:27017/kitchen_stories');
 
@@ -70,11 +72,12 @@ router.route('/foods/:id').get((req,res) =>
 
 router.route('/foods/add/').post((req, res) =>
 {
+    console.log(req.body);
     let food = new Food(req.body);
     food.save()
         .then(food => 
         {
-                res.status(200).json({'food':'Added successfully'});
+            res.status(200).json({'food':'Added successfully'});
         })
         .catch(err =>
         {
@@ -84,14 +87,16 @@ router.route('/foods/add/').post((req, res) =>
 
 router.route('/foods/update/:id').post((req, res) =>
 {
-    Food.findById(req.params._id, (err, food) =>
+    Food.findById(req.params.id, (err, food) =>
     {
         if (!food)
             return next(new Error('Could not load document'));
         else
+        {
             food.name= req.body.name;
             food.category = req.body.category;
             food.tag = req.body.tag;
+            food.price = req.body.price;
 
             food.save().then(food =>
                 {
@@ -100,13 +105,13 @@ router.route('/foods/update/:id').post((req, res) =>
                 {
                     res.status(400).send('Update failed')
                 });
-                
+        }
     });
 });
 
-router.route('/foods/delete/').post((req, res) =>
+router.route('/foods/delete/:id').get((req, res) =>
 {
-    food.findByIdAndRemove({_id: req.params.id}, (err, food) =>
+    Food.findByIdAndRemove({_id: req.params.id}, (err, food) =>
     {
         if(err)
             res.json(err);

@@ -1,0 +1,16 @@
+table
+{
+  width: 100%;
+}
+
+.mat-toolbar-row
+{
+  width: 100%;
+  align-items: right;
+  text-align: right;
+}
+
+.spacer
+{
+  flex: 1 1 auto;
+}

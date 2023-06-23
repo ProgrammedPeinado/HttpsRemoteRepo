@@ -8,7 +8,7 @@ const Food = require('../models/Food.js')
 const ObjectId = require('mongoose').Types.ObjectId
 
 // api needs to be created for Get, Post, Put, Delete
-// Base path for food requests consider http://localhost:5000/kitchen_stories/foods
+// Base path for food requests consider http://localhost:4000/kitchen_stories/foods
 // '/' in post refers to base path
 
 
@@ -47,7 +47,8 @@ router.post('/',(request, response) => {
     let food = new Food({
         name : request.body.name,
         category: request.body.category,
-        tag : request.body.tag
+        tag : request.body.tag,
+        price: request.body.price
     })
 
 
@@ -83,7 +84,8 @@ router.put('/:id', (request, response) =>{
         let food = {
         name : request.body.name,
         category: request.body.category,
-        tag : request.body.tag
+        tag : request.body.tag,
+        price: request.body.price
     }
         Food.findByIdAndUpdate(request.params.id, {$set : food}, {new : true},(err, doc) => {
             if(err){
