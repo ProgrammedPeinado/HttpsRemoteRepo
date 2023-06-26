@@ -6,7 +6,8 @@ import { Food } from '../appModels/food.model'
   providedIn: 'root'
 })
 export class FoodService {
-  uri = 'http://localhost:4000'
+  uri = 'http://localhost:4000';
+
   constructor(private http : HttpClient) { }
 
   addFood(food:Food)
@@ -14,13 +15,14 @@ export class FoodService {
     return this.http.post(`${this.uri}/foods/add`, food);
   }
 
-  addFoodI(name: string, category: string, tag: string)
+  addFoodI(name: String, category: String, tag: String, price: String)
   {
     const food =
     {
       name: name,
       category: category,
-      tag: tag
+      tag: tag,
+      price: price
     }
     return this.http.post(`${this.uri}/foods/add`, food);
   }
@@ -32,10 +34,10 @@ export class FoodService {
 
   getFoodList()
   {
-    return this.http.get<Food[]>(`${this.uri}`);
+    return this.http.get<Food[]>(`${this.uri}/foods`);
   }
 
-  getFoodbyId(id: string)
+  getFoodbyId(id: String)
   {
     return this.http.get(`${this.uri}/foods/${id}`);
   }
@@ -45,19 +47,20 @@ export class FoodService {
     return this.http.post(`${this.uri}`, food);
   }
 
-  updateFoodI(id: string, name: string, category: string, tag: string)
+  updateFoodI(id, name: String, category: String, tag: String, price: String)
   {
     const food =
     {
       name: name,
       category: category,
-      tag: tag
+      tag: tag,
+      price: price
     }
     return this.http.post(`${this.uri}/foods/update/${id}`, food);
   }
 
   deleteFood(id: string)
   {
-    return this.http.delete(`${this.uri}/foods/delete/${id}`);
+    return this.http.get(`${this.uri}/foods/delete/${id}`);
   }
 }

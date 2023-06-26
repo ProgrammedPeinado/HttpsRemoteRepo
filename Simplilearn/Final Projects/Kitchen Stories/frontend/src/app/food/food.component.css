@@ -48,3 +48,13 @@ table
   width: 100%;
 }
 
+.button, .math-icon
+{
+  width: 2px;
+  height: 2px;
+}
+
+.spacer
+{
+  flex: 1 1 auto;
+}

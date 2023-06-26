@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../appServices/cart.service';
-
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,26 +11,23 @@ export class CartComponent
 {
 
   foods = this.cartService.getItems();
-  displayedColumns = ['name', 'quantity', 'price'];
+  displayedColumns = ['name', 'price'];
+  totalPrice = this.getCurrentTotal();
 
-  constructor(private cartService : CartService)
+  constructor(private cartService : CartService, private router : Router)
   {
-
   }
 
-/*
-  ngOnInit()
+  getCurrentTotal(): Number
   {
-    this.fetchFoods();
+    let sum: number = 0;
+    this.cartService.getItems().forEach(i => sum+= Number(i.price));;
+    return Math.round(sum*100)/100;
   }
 
-
-  deleteFood(id)
+  purchaseConfirm()
   {
-    this.foodService.deleteFood(id).subscribe(()=>
-    {
-      this.fetchFoods();
-    })
+    window.alert("Thank you for your purcharse!");
+    this.router.navigate(['/']);
   }
-*/
 }

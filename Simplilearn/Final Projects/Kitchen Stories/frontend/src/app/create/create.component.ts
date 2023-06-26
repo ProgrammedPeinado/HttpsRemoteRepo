@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FoodService } from '../appServices/food.service';
 
+import { AuthGuard } from '../auth.guard';
+import { AuthService } from '../appServices/auth.service';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',

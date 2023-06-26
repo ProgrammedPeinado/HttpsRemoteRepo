@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+.mat-column-right {
+  text-align: center;
+}
+
+.mat-toolbar-row
+{
+  align-items: right;
+  text-align: right;
+}

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FoodComponent } from '../food/food/food.component';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table'
+
+import { Food } from 'src/app/appModels/food.model';
 import { FoodService } from '../appServices/food.service';
-import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuard } from '../auth.guard';
+import { AuthService } from '../appServices/auth.service';
 
 @Component({
   selector: 'app-list',
@@ -10,17 +15,40 @@ import { RouterModule, Routes } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private foodService : FoodService)
+  foods: Food[];
+  displayedColumns = ['name', 'category', 'tag', 'actions', 'price'];
+
+  constructor(private foodService : FoodService, private router: Router)
   {
 
   }
 
   ngOnInit()
   {
-    this.foodService.getFoods().subscribe((food) =>
-    {
-      console.log(food);
-    });
+    this.fetchFoods();
   }
+
+  fetchFoods()
+    {
+      this.foodService.getFoodList().subscribe((data: Food[])=>
+        {
+          this.foods = data;
+          console.log ('Data requested');
+          console.log(this.foods);
+        });
+    }
+
+    editFood(id)
+    {
+      this.router.navigate([`/update/${id}`]);
+    }
+
+    deleteFood(id)
+    {
+      this.foodService.deleteFood(id).subscribe(()=>
+      {
+        this.fetchFoods();
+      })
+    }
 
 }

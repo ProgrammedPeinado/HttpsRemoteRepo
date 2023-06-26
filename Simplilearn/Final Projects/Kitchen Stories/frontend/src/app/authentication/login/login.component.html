@@ -7,14 +7,12 @@
     <mat-divider></mat-divider>
     <br>
     <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)" class="update-form">
-      <mat-label for="inputUsername" class="sr-only">Username</mat-label>
       <mat-form-field class="field-full-width">
         <input matInput placeholder="Username" formControlName="userName" #username>
       </mat-form-field>
       <br>
-      <mat-label for="inputPassword" class="sr-only">Password</mat-label>
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Password" formControlName="password" #password>
+        <input type="password" matInput placeholder="Password" formControlName="password" #password>
       </mat-form-field>
       <mat-divider></mat-divider>
       <br><br>

@@ -6,7 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { FoodService } from '../appServices/food.service';
 import { Food } from '../appModels/food.model';
-
+import { AuthGuard } from '../auth.guard';
+import { AuthService } from '../appServices/auth.service';
 
 @Component({
   selector: 'app-edit',
