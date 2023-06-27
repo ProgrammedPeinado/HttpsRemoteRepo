@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -78,7 +79,8 @@ const routes: Routes =
     MatTableModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatPaginatorModule
   ],
   providers: [FoodService, AuthService, AuthGuard],
   bootstrap: [AppComponent]

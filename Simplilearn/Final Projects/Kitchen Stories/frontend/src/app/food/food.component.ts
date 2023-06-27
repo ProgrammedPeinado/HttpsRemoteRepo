@@ -7,7 +7,11 @@ import { LoginComponent } from '../authentication/login/login.component';
 import { AuthGuard } from '../auth.guard';
 import { AuthService } from '../appServices/auth.service';
 import { CartService } from '../appServices/cart.service';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule, _MatTableDataSource } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormField } from '@angular/material/form-field';
+import { DataSource } from '@angular/cdk/collections';
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
@@ -20,6 +24,12 @@ export class FoodComponent
 {
   isUserLoggedIn = false;
   foods: Food[];
+  dataSource = new MatTableDataSource<Food>();
+  resultsLength = 0;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
+
   displayedColumns = ['name','tag', 'actions', 'price'];
 
   showFiller = false;
@@ -40,6 +50,16 @@ export class FoodComponent
          this.isUserLoggedIn = false;
   }
 
+  ngAfterViewInit()
+  {
+    this.foodService.getFoodList().subscribe(foods =>
+      {
+        this.dataSource.data = foods;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
+  }
+
   fetchFoods()
   {
     this.foodService.getFoodList().subscribe((data: Food[])=>
@@ -52,5 +72,11 @@ export class FoodComponent
   {
     this.cartService.addToCart(food);
     window.alert('Your product has been added to the cart!');
+  }
+
+  applyFilter(event: Event)
+  {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

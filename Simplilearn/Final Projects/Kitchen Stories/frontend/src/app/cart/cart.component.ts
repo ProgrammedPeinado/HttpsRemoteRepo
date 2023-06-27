@@ -27,7 +27,7 @@ export class CartComponent
 
   purchaseConfirm()
   {
-    window.alert("Thank you for your purcharse!");
+    window.alert("Thank you for your purchase!");
     this.router.navigate(['/']);
   }
 }
