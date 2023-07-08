@@ -1,0 +1,24 @@
+<div *ngIf="flag">
+{{ message }} <!-- Remember, interpolation-->
+</div>
+<div *ngIf="flag, else aBlock">
+  {{ message }} <!-- Remember, interpolation-->
+  </div>
+<ng-template #aBlock>
+  <h2>No text to display</h2>
+</ng-template>
+
+<div>
+  Month:
+  <select>
+    <option *ngFor="let month of months">{{month}}</option>
+  </select>
+</div>
+
+<div *ngFor="let num of numbers">
+  <div ngSwitch="{{ num % 2 }}">
+    <div *ngSwitchCase="'0'">{{num}} is even</div>
+    <div *ngSwitchCase="'1'">{{num}} is odd</div>
+    <div *ngSwitchDefault>Default case</div>
+  </div>>
+</div>
